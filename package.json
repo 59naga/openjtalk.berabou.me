@@ -1,0 +1,24 @@
+{
+  "name": "openjtalk.berabou.me",
+  "private": true,
+
+  "dependencies": {
+    "express": "^4.13.3",
+    "openjtalk": "git+https://github.com/59naga/node-openjtalk.git"
+  },
+  "scripts": {
+    "start": "coffee ."
+  },
+
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/59naga/openjtalk.berabou.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/59naga/openjtalk.berabou.me/issues"
+  },
+  "homepage": "https://github.com/59naga/openjtalk.berabou.me#readme",
+  "author": "59naga <i59naga@icloud.com> (http://berabou.me)",
+  "license": "MIT"
+}
