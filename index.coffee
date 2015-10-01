@@ -62,8 +62,7 @@ app.get '/:words',(req,res) ->
 
   stdout= execSync script
   res.set 'Content-type','audio/wav'
-  res.set 'Content-length',Buffer.byteLength stdout
-  res.send stdout
+  res.end stdout
 
 # Boot
 app.listen process.env.PORT,->
