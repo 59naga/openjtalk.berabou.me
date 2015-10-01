@@ -4,6 +4,7 @@
 
   "dependencies": {
     "express": "^4.13.3",
+    "node-uuid": "^1.4.3",
     "openjtalk": "git+https://github.com/59naga/node-openjtalk.git"
   },
   "scripts": {

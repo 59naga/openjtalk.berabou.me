@@ -1,9 +1,11 @@
 # Dependencies
 bin= require.resolve 'openjtalk/bin/open_jtalk'
 express= require 'express'
+uuid= require 'node-uuid'
+fs= require 'fs'
 
 path= require 'path'
-execSync= require('child_process').execSync
+exec= require('child_process').exec
 
 # Environment
 process.env.PORT?= 59798
@@ -58,11 +60,19 @@ app.get '/:words',(req,res) ->
   pitch?= 220
 
   escapedWords= req.params.words.slice(0,200).replace(/(["\s'$`\\])/g,'\\$1')
-  script= 'echo "'+escapedWords+'" | '+bin+' -m '+speaker+' -x '+DICTIONARY+' -p '+pitch+' -ow /dev/stdout'
+  tmp= uuid.v4()+'.wav'
+  script= 'echo "'+escapedWords+'" | '+bin+' -m '+speaker+' -x '+DICTIONARY+' -p '+pitch+' -ow '+tmp
+  exec script,(error)->
+    return res.status(400).send error if error
 
-  stdout= execSync script
-  res.set 'Content-type','audio/wav'
-  res.end stdout
+    fs.readFile tmp,(error,tmpFile)->
+      return res.status(400).send error if error
+
+      res.set 'Content-type','audio/wav'
+      res.set 'Content-length',tmpFile.length
+      res.send tmpFile
+      
+      fs.unlink tmp
 
 # Boot
 app.listen process.env.PORT,->
