@@ -51,7 +51,7 @@ app.use (req,res,next) ->
   next()
 
 app.get '/',(req,res) ->
-  res.end 'powerd by http://cube370.wiki.fc2.com/'
+  res.end 'powerd by https://github.com/59naga/openjtalk.berabou.me/'
 
 # http://localhost:59798/はろわ -> <Buffer 52 49 46 ...>
 app.get '/:words',(req,res) ->
