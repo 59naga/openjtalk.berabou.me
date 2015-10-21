@@ -32,6 +32,7 @@ gitおよびNodeJSとbowerのインストールが終了していることが前
 git clone https://github.com/59naga/openjtalk.berabou.me.git
 cd openjtalk.berabou.me
 
+npm install coffee-script --global # optional
 npm install
 npm start
 # Server running at http://localhost:59798
